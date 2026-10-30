@@ -58,8 +58,10 @@ def add_students():
     except mysql.connector.Error:
         print("Database error: Unable to add student.")
     finally:
-        cursor.close()
-        connection.close()
+        try:
+            cursor.close()
+        finally:
+            connection.close()
     
 if __name__ == "__main__":
     add_students()
